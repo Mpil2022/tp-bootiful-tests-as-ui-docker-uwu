@@ -3,10 +3,10 @@ export const environment = {
   backend: {
     protocol: 'http',
     host: 'localhost',
-    port: '4200',
+    port: '8080',
     endpoints: {
-      current: "/current",
-      add: ""
+        current: "/adder/current",
+        add: "/adder"
     }
   }
 };
