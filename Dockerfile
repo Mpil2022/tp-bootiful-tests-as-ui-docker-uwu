@@ -1,3 +1,4 @@
-FROM nginx:alpine
-COPY static /usr/share/nginx/html
-LABEL maintainer = "usha.mandya@docker.com"
+# Basic nginx dockerfile starting with Ubuntu 20.04
+FROM ubuntu:20.04
+RUN apt-get -y update
+RUN apt-get -y install nginx
