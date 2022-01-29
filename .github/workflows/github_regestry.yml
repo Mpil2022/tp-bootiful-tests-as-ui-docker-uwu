@@ -32,7 +32,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: set up docker build
-        run: docker build . --file Dockerfile --tag front-uwu:$(date +%s)
+        run: docker build . --file Dockerfile --tag front-uwu:latest
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -43,4 +43,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: $(date +%s)
+          tags: latest
