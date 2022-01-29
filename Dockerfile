@@ -1,4 +1,16 @@
-# Basic nginx dockerfile starting with Ubuntu 20.04
-FROM ubuntu:20.04
-RUN apt-get -y update
-RUN apt-get -y install nginx
+# ./Dockerfile
+
+FROM node:12-alpine as node-angular-cli
+
+LABEL authors="Preston Lamb"
+
+# Linux setup
+RUN apk update \
+  && apk add --update alpine-sdk \
+  && apk del alpine-sdk \
+  && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
+  && npm cache verify \
+  && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+
+# Angular CLI
+RUN npm install -g @angular/cli@8
